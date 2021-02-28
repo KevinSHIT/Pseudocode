@@ -6,6 +6,9 @@ namespace Kevin.Pseudocode
 {
     public static class Extension
     {
+        public static bool TO_BOOL(this object obj)
+            => obj.TO_INT() > 0 ? true : false;
+
         public static double TO_DOUBLE(this object obj)
             => double.Parse(obj.ToString() ?? string.Empty);
 
