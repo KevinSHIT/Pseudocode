@@ -11,3 +11,18 @@ FOR_LOOP_IN_RANGE(1, 10, (i) =>
         () => PRINTLINE("WORLD!", "HI"));
 });
 PRINT(j);
+
+int i = 10;
+WHILE(() => i > 100, () =>
+{
+    i = i * 2;
+    PRINTLN(i);
+    PRINTLN(i< 100);
+});
+
+WHILE(i > 100, () =>
+{
+    i = i * 2;
+    PRINTLN(i);
+    PRINTLN(i< 100);
+});

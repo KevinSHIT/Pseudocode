@@ -7,7 +7,12 @@ namespace Kevin.Pseudocode
     public class Basic
     {
         public static object NULL => null;
-        
+
+        public static bool TRUE => true;
+        public static bool FALSE => false;
+
+        #region FOR
+
         public static void FOR_LOOP_IN_RANGE(int from, int to, Action<int> action)
         {
             for (int i = from; i < to; ++i)
@@ -24,12 +29,16 @@ namespace Kevin.Pseudocode
             }
         }
 
+        #endregion
+
         public static void SWAP(ref object A, ref object B)
         {
             object C = A;
             A = B;
             B = C;
         }
+
+        #region IF
 
         public static void IF(Func<bool> judgement, Action ifRight, Action ifElse = null)
             => IF(judgement.Invoke(), ifRight, ifElse);
@@ -41,5 +50,40 @@ namespace Kevin.Pseudocode
             else
                 ifElse?.Invoke();
         }
+
+        #endregion
+
+        #region WHILE
+
+        public static void WHILE(Func<bool> judgement)
+        {
+            while (true)
+            {
+                if (judgement.Invoke())
+                    break;
+            }
+        }
+        
+        public static void WHILE(Func<bool> judgement, Action act)
+        {
+            while (true)
+            {
+                if (judgement.Invoke())
+                    break;
+                act.Invoke();
+            }
+        }
+        
+        public static void WHILE(bool judgement, Action act)
+        {
+            while (true)
+            {
+                if (judgement)
+                    break;
+                act.Invoke();
+            }
+        }
+
+        #endregion
     }
 }
