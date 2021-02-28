@@ -2,7 +2,7 @@
 
 namespace Kevin.Pseudocode
 {
-    public class Env
+    public static class Env
     {
         public static string NEWLINE => System.Environment.NewLine;
     }

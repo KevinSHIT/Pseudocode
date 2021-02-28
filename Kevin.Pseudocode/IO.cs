@@ -5,7 +5,7 @@
 
 namespace Kevin.Pseudocode
 {
-    public class IO
+    public static class IO
     {
         #region READLINE
 

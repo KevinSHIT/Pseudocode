@@ -2,7 +2,7 @@
 
 namespace Kevin.Pseudocode
 {
-    public class Math
+    public static class Math
     {
         public static double LOG(double x)
             => System.Math.Log(x);
