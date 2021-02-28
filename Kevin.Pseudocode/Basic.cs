@@ -7,7 +7,6 @@ namespace Kevin.Pseudocode
     public class Basic
     {
         public static object NULL => null;
-
         public static bool TRUE => true;
         public static bool FALSE => false;
 
@@ -63,7 +62,7 @@ namespace Kevin.Pseudocode
                     break;
             }
         }
-        
+
         public static void WHILE(Func<bool> judgement, Action act)
         {
             while (true)
@@ -73,7 +72,7 @@ namespace Kevin.Pseudocode
                 act.Invoke();
             }
         }
-        
+
         public static void WHILE(bool judgement, Action act)
         {
             while (true)

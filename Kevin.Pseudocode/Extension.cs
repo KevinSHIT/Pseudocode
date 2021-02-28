@@ -43,5 +43,14 @@ namespace Kevin.Pseudocode
 
             return null;
         }
+
+        public static string TRIME(this string str)
+            => str.Trim();
+
+        public static string SUBSTRING(this string str, int index)
+            => index < 0 ? str.Substring(0, str.Length - index) : str.Substring(index);
+
+        public static string SUBSTRING(this string str, int index, int length)
+            => str.Substring(index, length);
     }
 }

@@ -9,6 +9,9 @@ namespace Kevin.Pseudocode
     {
         #region READLINE
 
+        public static string READLN()
+            => Console.ReadLine();
+
         public static string READLINE()
             => Console.ReadLine();
 
