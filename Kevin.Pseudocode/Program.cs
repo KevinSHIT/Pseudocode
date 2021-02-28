@@ -1,4 +1,5 @@
-﻿using static Kevin.Pseudocode.Basic;
+﻿using Kevin.Pseudocode;
+using static Kevin.Pseudocode.Basic;
 using static Kevin.Pseudocode.IO;
 using static Kevin.Pseudocode.Env;
 using static Kevin.Pseudocode.Array;
@@ -26,3 +27,4 @@ WHILE(i > 100, () =>
     PRINTLN(i);
     PRINTLN(i< 100);
 });
+PRINT(true.TO_INT());
