@@ -56,32 +56,46 @@ namespace Kevin.Pseudocode
 
         public static void WHILE(Func<bool> judgement)
         {
-            while (true)
+            while (judgement.Invoke())
             {
-                if (judgement.Invoke())
-                    break;
             }
         }
 
         public static void WHILE(Func<bool> judgement, Action act)
         {
-            while (true)
+            while (judgement.Invoke())
             {
-                if (judgement.Invoke())
-                    break;
                 act.Invoke();
             }
         }
 
-        public static void WHILE(bool judgement, Action act)
-        {
-            while (true)
-            {
-                if (judgement)
-                    break;
-                act.Invoke();
-            }
-        }
+        #endregion
+
+        #region Compare
+
+        public static bool EQ(object A, object B)
+            => A == B;
+
+        public static bool NE(object A, object B)
+            => A != B;
+
+        public static bool GE(object A, object B)
+            => A.TO_DOUBLE() >= B.TO_DOUBLE();
+
+        public static bool GEQ(object A, object B)
+            => A.TO_DOUBLE() >= B.TO_DOUBLE();
+
+        public static bool LE(object A, object B)
+            => A.TO_DOUBLE() <= B.TO_DOUBLE();
+
+        public static bool LEQ(object A, object B)
+            => A.TO_DOUBLE() <= B.TO_DOUBLE();
+
+        public static bool GREATER(object A, object B)
+            => A.TO_DOUBLE() > B.TO_DOUBLE();
+
+        public static bool LESS(object A, object B)
+            => A.TO_DOUBLE() < B.TO_DOUBLE();
 
         #endregion
     }
