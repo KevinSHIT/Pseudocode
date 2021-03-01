@@ -75,7 +75,7 @@ namespace Kevin.Pseudocode
             public static implicit operator double(LET L)
                 => _type switch
                 {
-                    LETTYPE.INT => (double) _data,
+                    LETTYPE.INT => (double)((int) _data),
                     LETTYPE.DOUBLE => (double) _data,
                     LETTYPE.STRING => ((string) _data).TO_DOUBLE(),
                     _ => throw new ArgumentOutOfRangeException()
