@@ -1,5 +1,11 @@
 ﻿using System;
 
+// ReSharper disable NonReadonlyMemberInGetHashCode
+// ReSharper disable SpecifyACultureInStringConversionExplicitly
+// ReSharper disable MemberCanBeMadeStatic.Global
+// ReSharper disable CA1822
+// ReSharper disable IdentifierTypo
+// ReSharper disable ClassNeverInstantiated.Global
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable InconsistentNaming
 
@@ -11,11 +17,31 @@ namespace Kevin.Pseudocode
         {
             DOUBLE,
             INT,
-            [Obsolete] STRING
+            STRING
         }
 
         public class LET
         {
+            #region Obj Base
+
+            public override string ToString()
+                => this;
+
+            protected bool Equals(LET other)
+                => this == other;
+
+            public override bool Equals(object obj)
+            {
+                if (ReferenceEquals(null, obj)) return false;
+                if (ReferenceEquals(this, obj)) return true;
+                return obj.GetType() == GetType() && Equals((LET) obj);
+            }
+
+            public override int GetHashCode()
+                => _data.GetHashCode();
+
+            #endregion
+
             private static LETTYPE _type;
             private static object _data;
 
@@ -44,6 +70,8 @@ namespace Kevin.Pseudocode
 
             #endregion
 
+            #region Implicit Cast
+
             public static implicit operator double(LET L)
                 => _type switch
                 {
@@ -70,6 +98,12 @@ namespace Kevin.Pseudocode
                     LETTYPE.STRING => (string) _data,
                     _ => null
                 };
+
+            public static explicit operator LET(int i) => new LET(i);
+            public static explicit operator LET(double d) => new LET(d);
+            public static explicit operator LET(string s) => new LET(s);
+
+            #endregion
 
             public static LET operator ++(LET L)
                 => L.GET_TYPE() switch
@@ -246,13 +280,6 @@ namespace Kevin.Pseudocode
                 => l1 % (LET) l2;
 
             #endregion
-
-            public override string ToString()
-                => this;
-
-            public static explicit operator LET(int i) => new LET(i);
-            public static explicit operator LET(double d) => new LET(d);
-            public static explicit operator LET(string s) => new LET(s);
         }
     }
 }
