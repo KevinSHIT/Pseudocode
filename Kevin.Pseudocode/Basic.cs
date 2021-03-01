@@ -155,6 +155,57 @@ namespace Kevin.Pseudocode
 
         #endregion
 
+        public static void LOOP(Func<bool> action)
+        {
+            while (true)
+            {
+                if (action.Invoke())
+                {
+                    break;
+                }
+            }
+        }
+        
+        public static void LOOP(Func<int> action)
+        {
+            while (true)
+            {
+                if (action.Invoke() != 0)
+                {
+                    break;
+                }
+            }
+        }
+        
+        public static void LOOP(Func<bool>[] actions)
+        {
+            while (true)
+            {
+                foreach (var action in actions)
+                {
+                    if (action.Invoke())
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+        
+        public static void LOOP(Func<int>[] actions)
+        {
+            while (true)
+            {
+                foreach (var action in actions)
+                {
+                    if (action.Invoke() != 0)
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+        
+        
         #region Compare
 
         public static bool EQ(object A, object B)
