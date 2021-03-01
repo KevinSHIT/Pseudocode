@@ -1,15 +1,17 @@
-﻿using Kevin.Pseudocode;
+﻿// ReSharper disable RedundantUsingDirective
+
+using Kevin.Pseudocode;
 using static Kevin.Pseudocode.Basic;
 using static Kevin.Pseudocode.IO;
 using static Kevin.Pseudocode.Env;
 using static Kevin.Pseudocode.Array;
 
 var j = 0;
-FOR_LOOP_IN_RANGE(1, 10, (i) =>
+FOR_LOOP_IN_RANGE(1, 10, (m) =>
 {
-    IF(i % 2 == 0,
+    IF(m % 2 == 0,
         () => PRINTLINE("HELLO!"),
-        () => PRINTLINE("WORLD!", "HI"));
+        () => PRINTLINE("WORLD!"));
 });
 PRINT(j);
 int i = 10;
