@@ -27,6 +27,42 @@ namespace Kevin.Pseudocode
                 action.Invoke();
             }
         }
+        
+        public static void FOR_LOOP_IN_RANGE(int from, int to, Func<bool> action)
+        {
+            for (int i = from; i < to; ++i)
+            {
+                if (!action.Invoke())
+                    break;
+            }
+        }
+        
+        public static void FOR_LOOP_IN_RANGE(int from, int to, Func<int, bool> action)
+        {
+            for (int i = from; i < to; ++i)
+            {
+                if (!action.Invoke(i))
+                    break;
+            }
+        }
+        
+        public static void FOR_LOOP_IN_RANGE(int from, int to, Func<int> action)
+        {
+            for (int i = from; i < to; ++i)
+            {
+                if (action.Invoke() != 0)
+                    break;
+            }
+        }
+        
+        public static void FOR_LOOP_IN_RANGE(int from, int to, Func<int, int> action)
+        {
+            for (int i = from; i < to; ++i)
+            {
+                if (action.Invoke(i) != 0)
+                    break;
+            }
+        }
 
         #endregion
 
