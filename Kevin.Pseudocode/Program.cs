@@ -7,6 +7,10 @@ using static Kevin.Pseudocode.Env;
 using static Kevin.Pseudocode.Array;
 using static Kevin.Pseudocode.Type;
 
+// ReSharper disable ConvertToCompoundAssignment
+// ReSharper disable SuggestVarOrType_SimpleTypes
+// ReSharper disable SuggestVarOrType_BuiltInTypes
+
 var j = 0;
 FOR_LOOP_IN_RANGE(1, 10, (m) =>
 {
