@@ -14,6 +14,9 @@
 
         #region TO_DOUBLE
 
+        public static double TO_DOUBLE(this Type.LET obj)
+            => (double)obj;
+
         public static double TO_DOUBLE(this double obj)
             => obj;
 
@@ -29,6 +32,9 @@
         #endregion
 
         #region TO_INT
+
+        public static int TO_INT(this Type.LET obj)
+            => (int)obj;
 
         public static int TO_INT(this int obj)
             => obj;

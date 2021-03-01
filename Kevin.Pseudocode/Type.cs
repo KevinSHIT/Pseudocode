@@ -44,34 +44,62 @@ namespace Kevin.Pseudocode
             #endregion
 
             public static implicit operator double(LET L)
-            {
-                if (_type == LETTYPE.DOUBLE)
+                => _type switch
                 {
-                    return (double) _data;
-                }
-
-                return _data.TO_DOUBLE();
-            }
+                    LETTYPE.INT => (double) _data,
+                    LETTYPE.DOUBLE => (double) _data,
+                    LETTYPE.STRING => ((string) _data).TO_DOUBLE(),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
             public static implicit operator int(LET L)
-            {
-                if (_type == LETTYPE.INT)
+                => _type switch
                 {
-                    return (int) _data;
-                }
-
-                return _data.TO_INT();
-            }
+                    LETTYPE.INT => (int) _data,
+                    LETTYPE.DOUBLE => (int) _data,
+                    LETTYPE.STRING => ((string) _data).TO_INT(),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
             public static implicit operator string(LET L)
-            {
-                if (_type == LETTYPE.STRING)
+                => _type switch
                 {
-                    return (string) _data;
-                }
+                    LETTYPE.INT => ((int) _data).ToString(),
+                    LETTYPE.DOUBLE => ((double) _data).ToString(),
+                    LETTYPE.STRING => (string) _data,
+                    _ => null
+                };
 
-                return _data.TO_STRING();
+            public static LET operator ==(LET l1, LET l2)
+            {
+                throw new NotImplementedException();
             }
+
+            public static LET operator !=(LET l1, LET l2)
+            {
+                throw new NotImplementedException();
+            }
+
+            public static LET operator >(LET l1, LET l2)
+            {
+                throw new NotImplementedException();
+            }
+
+            public static LET operator <(LET l1, LET l2)
+            {
+                throw new NotImplementedException();
+            }
+
+            public static LET operator >=(LET l1, LET l2)
+            {
+                throw new NotImplementedException();
+            }
+
+            public static LET operator <=(LET l1, LET l2)
+            {
+                throw new NotImplementedException();
+            }
+
 
             public static LET operator +(LET l1, LET l2)
             {
@@ -169,22 +197,7 @@ namespace Kevin.Pseudocode
             #endregion
 
             public override string ToString()
-                => TO_STRING();
-
-            private string TO_STRING()
-            {
-                switch (_type)
-                {
-                    case LETTYPE.INT:
-                        return ((int) _data).ToString();
-                    case LETTYPE.DOUBLE:
-                        return ((double) _data).ToString();
-                    case LETTYPE.STRING:
-                        return (string) _data;
-                }
-
-                return null;
-            }
+                => this;
 
             public static explicit operator LET(int i) => new LET(i);
             public static explicit operator LET(double d) => new LET(d);

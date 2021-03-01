@@ -26,4 +26,5 @@ PRINT(true.TO_INT());
 PRINTLINE("-----");
 LET l = (LET) 1;
 LET m = l + 22;
+m.TO_DOUBLE();
 PRINT(l);
