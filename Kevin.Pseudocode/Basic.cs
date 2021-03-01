@@ -44,7 +44,7 @@ namespace Kevin.Pseudocode
                 foreach (var action in actions)
                 {
                     if (action.Invoke())
-                        break;
+                        return;
                 }
             }
         }
@@ -65,7 +65,7 @@ namespace Kevin.Pseudocode
                 foreach (var action in actions)
                 {
                     if (action.Invoke(i))
-                        break;
+                        return;
                 }
             }
         }
@@ -86,7 +86,7 @@ namespace Kevin.Pseudocode
                 foreach (var action in actions)
                 {
                     if (action.Invoke() != 0)
-                        break;
+                        return;
                 }
             }
         }
@@ -107,7 +107,7 @@ namespace Kevin.Pseudocode
                 foreach (var action in actions)
                 {
                     if (action.Invoke(i) != 0)
-                        break;
+                        return;
                 }
             }
         }
