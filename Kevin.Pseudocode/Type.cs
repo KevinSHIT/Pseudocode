@@ -75,7 +75,7 @@ namespace Kevin.Pseudocode
             public static implicit operator double(LET L)
                 => _type switch
                 {
-                    LETTYPE.INT => (double)((int) _data),
+                    LETTYPE.INT => (double) ((int) _data),
                     LETTYPE.DOUBLE => (double) _data,
                     LETTYPE.STRING => ((string) _data).TO_DOUBLE(),
                     _ => throw new ArgumentOutOfRangeException()
@@ -108,16 +108,16 @@ namespace Kevin.Pseudocode
             public static LET operator ++(LET L)
                 => L.GET_TYPE() switch
                 {
-                    LETTYPE.DOUBLE => new LET((double) L + 1.0),
-                    LETTYPE.INT => new LET((int) L + 1),
+                    LETTYPE.DOUBLE => L = new LET((double) L + 1.0),
+                    LETTYPE.INT => L = new LET((int) L + 1),
                     _ => L
                 };
 
             public static LET operator --(LET L)
                 => L.GET_TYPE() switch
                 {
-                    LETTYPE.DOUBLE => new LET((double) L - 1.0),
-                    LETTYPE.INT => new LET((int) L - 1),
+                    LETTYPE.DOUBLE => L = new LET((double) L - 1.0),
+                    LETTYPE.INT => L = new LET((int) L - 1),
                     _ => L
                 };
 
@@ -187,13 +187,19 @@ namespace Kevin.Pseudocode
 
 
             public static LET operator +(LET l1, LET l2)
-                => GetCommonType(l1, l2) switch
+            {
+                // FIXME: 传递爆炸了
+                Console.WriteLine("L1 -> " + l1);
+                Console.WriteLine("L2 -> " + l2);
+
+                return GetCommonType(l1, l2) switch
                 {
                     LETTYPE.DOUBLE => (LET) ((double) l1 + (double) l2),
                     LETTYPE.INT => (LET) ((int) l1 + (int) l2),
                     LETTYPE.STRING => (LET) ((string) l1 + (string) l2),
                     _ => throw new ArgumentOutOfRangeException()
                 };
+            }
 
 
             public static LET operator -(LET l1, LET l2)
@@ -240,7 +246,13 @@ namespace Kevin.Pseudocode
                 => (LET) l1 + l2;
 
             public static LET operator +(LET l1, int l2)
-                => l1 + (LET) l2;
+            {
+                //FIXME: 传递爆炸了
+                Console.WriteLine($"+L1 -> {l1}");
+                Console.WriteLine($"+L2 -> {(LET) l2}");
+                Console.WriteLine($"RST -> {l1 + (LET) l2}");
+                return (LET) l1 + (LET) l2;
+            }
 
 
             public static LET operator -(int l1, LET l2)
