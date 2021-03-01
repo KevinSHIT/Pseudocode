@@ -1,5 +1,6 @@
 ﻿using System;
 
+// ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable InconsistentNaming
 
 namespace Kevin.Pseudocode
@@ -71,22 +72,20 @@ namespace Kevin.Pseudocode
                 };
 
             public static LET operator ++(LET L)
-                =>
-                    L.GET_TYPE() switch
-                    {
-                        LETTYPE.DOUBLE => new LET((double) L + 1.0),
-                        LETTYPE.INT => new LET((int) L + 1),
-                        _ => L
-                    };
+                => L.GET_TYPE() switch
+                {
+                    LETTYPE.DOUBLE => new LET((double) L + 1.0),
+                    LETTYPE.INT => new LET((int) L + 1),
+                    _ => L
+                };
 
             public static LET operator --(LET L)
-                =>
-                    L.GET_TYPE() switch
-                    {
-                        LETTYPE.DOUBLE => new LET((double) L - 1.0),
-                        LETTYPE.INT => new LET((int) L - 1),
-                        _ => L
-                    };
+                => L.GET_TYPE() switch
+                {
+                    LETTYPE.DOUBLE => new LET((double) L - 1.0),
+                    LETTYPE.INT => new LET((int) L - 1),
+                    _ => L
+                };
 
             public static LET operator ==(LET l1, LET l2)
             {
