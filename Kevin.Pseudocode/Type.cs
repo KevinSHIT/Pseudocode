@@ -87,35 +87,69 @@ namespace Kevin.Pseudocode
                     _ => L
                 };
 
-            public static LET operator ==(LET l1, LET l2)
+            private static LETTYPE GetCommonType(LET l1, LET l2)
             {
-                throw new NotImplementedException();
+                return GetCommonType(l1, l2, out bool _);
             }
 
-            public static LET operator !=(LET l1, LET l2)
+            private static LETTYPE GetCommonType(LET l1, LET l2, out bool restrict)
             {
-                throw new NotImplementedException();
+                restrict = true;
+                if (l1.GET_TYPE() == l2.GET_TYPE())
+                    return l1.GET_TYPE();
+                restrict = false;
+                if (l1.GET_TYPE() == LETTYPE.STRING ||
+                    l2.GET_TYPE() == LETTYPE.STRING)
+                {
+                    return LETTYPE.STRING;
+                }
+
+                if (l1.GET_TYPE() == LETTYPE.DOUBLE ||
+                    l2.GET_TYPE() == LETTYPE.DOUBLE)
+                {
+                    return LETTYPE.DOUBLE;
+                }
+
+                return LETTYPE.INT;
             }
 
-            public static LET operator >(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+            public static bool operator ==(LET l1, LET l2)
+                => GetCommonType(l1, l2) switch
+                {
+                    // FIXME: Double -> Decimal
+                    LETTYPE.DOUBLE => System.Math.Abs((double) l1 - (double) l2) < 0.0000003,
+                    LETTYPE.INT => (int) l1 == (int) l2,
+                    LETTYPE.STRING => (string) l1 == (string) l2,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
-            public static LET operator <(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+            public static bool operator !=(LET l1, LET l2) => !(l1 == l2);
 
-            public static LET operator >=(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+            public static bool operator >(LET l1, LET l2)
+                => GetCommonType(l1, l2) switch
+                {
+                    // FIXME: Double -> Decimal
+                    LETTYPE.DOUBLE => (double) l1 > (double) l2,
+                    LETTYPE.INT => (int) l1 > (int) l2,
+                    LETTYPE.STRING => ((string) l1).Length > ((string) l2).Length,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
-            public static LET operator <=(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+            public static bool operator <(LET l1, LET l2)
+                => GetCommonType(l1, l2) switch
+                {
+                    // FIXME: Double -> Decimal
+                    LETTYPE.DOUBLE => (double) l1 < (double) l2,
+                    LETTYPE.INT => (int) l1 < (int) l2,
+                    LETTYPE.STRING => ((string) l1).Length < ((string) l2).Length,
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+
+            public static bool operator >=(LET l1, LET l2)
+                => (l1 == l2) || (l1 > l2);
+
+            public static bool operator <=(LET l1, LET l2)
+                => (l1 == l2) || (l1 < l2);
 
 
             public static LET operator +(LET l1, LET l2)
