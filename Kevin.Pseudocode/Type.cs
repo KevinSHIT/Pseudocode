@@ -187,29 +187,46 @@ namespace Kevin.Pseudocode
 
 
             public static LET operator +(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+                => GetCommonType(l1, l2) switch
+                {
+                    LETTYPE.DOUBLE => (LET) ((double) l1 + (double) l2),
+                    LETTYPE.INT => (LET) ((int) l1 + (int) l2),
+                    LETTYPE.STRING => (LET) ((string) l1 + (string) l2),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+
 
             public static LET operator -(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+                => GetCommonType(l1, l2) switch
+                {
+                    LETTYPE.DOUBLE => (LET) ((double) l1 - (double) l2),
+                    LETTYPE.INT => (LET) ((int) l1 - (int) l2),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
             public static LET operator *(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+                => GetCommonType(l1, l2) switch
+                {
+                    LETTYPE.DOUBLE => (LET) ((double) l1 * (double) l2),
+                    LETTYPE.INT => (LET) ((int) l1 * (int) l2),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
             public static LET operator /(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+                => GetCommonType(l1, l2) switch
+                {
+                    LETTYPE.DOUBLE => (LET) ((double) l1 / (double) l2),
+                    LETTYPE.INT => (LET) ((int) l1 / (int) l2),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
             public static LET operator %(LET l1, LET l2)
-            {
-                throw new NotImplementedException();
-            }
+                => GetCommonType(l1, l2) switch
+                {
+                    LETTYPE.DOUBLE => (LET) ((double) l1 % (double) l2),
+                    LETTYPE.INT => (LET) ((int) l1 % (int) l2),
+                    _ => throw new ArgumentOutOfRangeException()
+                };
 
             #region Operator Overloads
 
