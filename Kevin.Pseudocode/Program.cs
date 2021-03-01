@@ -5,6 +5,7 @@ using static Kevin.Pseudocode.Basic;
 using static Kevin.Pseudocode.IO;
 using static Kevin.Pseudocode.Env;
 using static Kevin.Pseudocode.Array;
+using static Kevin.Pseudocode.Type;
 
 var j = 0;
 FOR_LOOP_IN_RANGE(1, 10, (m) =>
@@ -22,3 +23,7 @@ WHILE(() => i < 100, () =>
     PRINTLN(i < 100);
 });
 PRINT(true.TO_INT());
+PRINTLINE("-----");
+LET l = (LET) 1;
+LET m = l + 22;
+PRINT(l);
